@@ -1,23 +1,29 @@
-import { useState } from 'react'
-
-import './App.css'
+import { Container, Nav, Navbar } from 'react-bootstrap';
+import { Outlet } from 'react-router-dom';
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    
-    <div>
+    <div className='d-flex flex-column vh-100'>
       <header>
-        TS Amazona
+        <Navbar bg="dark" variant='dark' expand="lg">
+          <Container>
+            <Navbar.Brand>tsamazona</Navbar.Brand>
+          </Container>
+          <Nav>
+            <a href="/cart" className='nav-link'>Cart</a>
+            <a href="/signup" className='nav-link'>Sign In</a>
+
+          </Nav>
+        </Navbar>
       </header>
       <main>
-        
+        <Container className='mt-3'>
+     <Outlet/>
+        </Container>
       </main>
-      <footer>All right reserved</footer>
+      <footer><div className='text-center'>All right reserved</div></footer>
     </div>
-    
-  )
+  );
 }
 
-export default App
+export default App;
