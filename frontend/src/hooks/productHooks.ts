@@ -6,7 +6,20 @@ export const useGetProductsQuery = () =>
   useQuery({
     queryKey: ['products'],
     queryFn: async () => (await apiClient.get<Product[]>(`api/products`)).data,
-})
+  })
+
+
+
+  //Sert a avoir les infossquand on clique sur produits
+
+export const useGetProductDetailsBySlugQuery = (slug: string) =>
+  useQuery({
+    queryKey: ['products', slug],
+    queryFn: async () =>
+      (await apiClient.get<Product>(`api/products/slug/${slug}`)).data,
+  })
+
+  
 
 {/* useGetProductsQuery permet de remplacer 
 
