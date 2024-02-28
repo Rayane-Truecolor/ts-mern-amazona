@@ -1,7 +1,8 @@
-import express  from 'express'
+import express, { Request, Response }  from 'express'
 import dotenv from 'dotenv'
 import mongoose from 'mongoose'
 import cors from 'cors'
+import path from 'path'
 import { productRouter } from './routers/productRouter'
 import { seedRouter } from './routers/seedRouter'
 import { userRouter } from './routers/userRouter'
@@ -33,6 +34,11 @@ app.use('/api/products', productRouter)
 app.use('/api/users', userRouter)
 app.use('/api/seed', seedRouter)
 
+
+app.use(express.static(path.join(__dirname, '../../frontend/.dist')))
+app.get('*', (req: Request, res: Response) =>
+res.sendFile(path.join(__dirname, '../../frontend/dist/index.html'))
+)
 
 const PORT = 4000
 app.listen(PORT, () => {
