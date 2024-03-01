@@ -10,10 +10,9 @@ import { userRouter } from './routers/userRouter'
 
 dotenv.config()
 
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1/tsthewavedb'
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/tsthewavedb'
 mongoose.set('strictQuery', true)
-mongoose
-  .connect(MONGODB_URI)
+mongoose.connect(MONGODB_URI)
   .then(() => {
     console.log('connected to mongodb')
   })
