@@ -1,9 +1,9 @@
 import { useContext, useEffect, useState } from 'react'
-import { Form, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { Store } from '../Store'
 import CheckoutSteps from '../components/CheckoutSteps'
 import { Helmet } from 'react-helmet-async'
-import { Button } from 'react-bootstrap'
+import { Form, Button } from 'react-bootstrap'
 
 export default function PaymentMethodPage() {
   const navigate = useNavigate()
@@ -31,7 +31,7 @@ export default function PaymentMethodPage() {
 
   return (
     <div>
-      <CheckoutSteps step1 step2 step3></CheckoutSteps>
+      <CheckoutSteps step1 step2 step3 />
       <div className="container small-container">
         <Helmet>
           <title>Payment Method</title>
@@ -57,12 +57,12 @@ export default function PaymentMethodPage() {
               checked={paymentMethodName === 'Stripe'}
               onChange={(e) => setPaymentMethodName(e.target.value)}
             />
-            </div>
-            <div className="mb-3">
-              <Button type="submit">Continue</Button>
-            </div>
+          </div>
+          <div className="mb-3">
+            <Button type="submit">Continue</Button>
+          </div>
         </Form>
       </div>
     </div>
-  )
+  );
 }
